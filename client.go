@@ -45,7 +45,7 @@ func (b *PeriscopeBuilder) BuildClient() (Client, error) {
 		return nil, errors.Wrapf(err, "OAuthRefresh is failed")
 	}
 
-	return newClient(b.urlBase, &httpCli, b.useragent, auth.AccessToken), nil
+	return NewClient(b.urlBase, &httpCli, b.useragent, auth.AccessToken), nil
 }
 
 type AuthClient interface {
@@ -160,7 +160,7 @@ type ClientImpl struct {
 	accessToken string
 }
 
-func newClient(urlBase string, httpCli *http.Client, useragent string, accessToken string) Client {
+func NewClient(urlBase string, httpCli *http.Client, useragent string, accessToken string) Client {
 	return &ClientImpl{
 		urlBase:     urlBase,
 		httpCli:     httpCli,
