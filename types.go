@@ -52,6 +52,64 @@ type VideoAccess struct {
 	HTTPSHlsURL string `json:"https_hls_url"`
 }
 
+type ChatMessage struct {
+	ID    string `json:"id"`
+	Type  string `json:"type"`
+	Text  string `json:"text"`
+	User  User   `json:"user"`
+	Color string `json:"color"`
+}
+
+type HeartMessage struct {
+	ID    string `json:"id"`
+	Type  string `json:"type"`
+	User  User   `json:"user"`
+	Color string `json:"color"`
+}
+
+type JoinMessage struct {
+	ID    string `json:"id"`
+	Type  string `json:"type"`
+	User  User   `json:"user"`
+	Color string `json:"color"`
+}
+
+type ScreenshotMessage struct {
+	ID    string `json:"id"`
+	Type  string `json:"type"`
+	User  User   `json:"user"`
+	Color string `json:"color"`
+}
+
+type ShareMessage struct {
+	ID      string `json:"id"`
+	Type    string `json:"type"`
+	Service string `json:"service"`
+	User    User   `json:"user"`
+	Color   string `json:"color"`
+}
+
+type SuperHeartMessage struct {
+	Type   string `json:"type"`
+	User   User   `json:"user"`
+	Color  string `json:"color"`
+	Amount int32  `json:"amount"`
+	Tier   int32  `json:"tier"`
+}
+
+type ViewerCountMessage struct {
+	ID    string `json:"id"`
+	Type  string `json:"type"`
+	Live  int32  `json:"live"`
+	Total int32  `json:"total"`
+}
+
+type ErrorMessage struct {
+	ID          string `json:"id"`
+	Type        string `json:"type"`
+	Description string `json:"description"`
+}
+
 type internalError struct {
 	Message          string `json:"message"`
 	DocumentationURL string `json:"documentation_url"`
