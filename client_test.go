@@ -219,7 +219,7 @@ func TestPublishBroadcast(t *testing.T) {
 		if err := json.NewDecoder(r.Body).Decode(&params); err != nil {
 			t.Fatal(err)
 		}
-		assert.Equal(t, "broadcast_id", params.BroadcaastID)
+		assert.Equal(t, "broadcast_id", params.BroadcastID)
 		assert.Equal(t, "title", params.Title)
 		assert.Equal(t, true, params.ShouldNotTweet)
 		assert.Equal(t, "ja_JP", params.Locale)
@@ -262,7 +262,7 @@ func TestStopBroadcast(t *testing.T) {
 		if err := json.NewDecoder(r.Body).Decode(&params); err != nil {
 			t.Fatal(err)
 		}
-		assert.Equal(t, "broadcast_id", params.BroadcaastID)
+		assert.Equal(t, "broadcast_id", params.BroadcastID)
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
@@ -300,7 +300,7 @@ func TestDeleteBroadcast(t *testing.T) {
 		if err := json.NewDecoder(r.Body).Decode(&params); err != nil {
 			t.Fatal(err)
 		}
-		assert.Equal(t, "broadcast_id", params.BroadcaastID)
+		assert.Equal(t, "broadcast_id", params.BroadcastID)
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)

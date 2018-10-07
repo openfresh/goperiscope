@@ -27,7 +27,7 @@ type CreateBroadcastResponse struct {
 }
 
 type PublishBroadcastRequest struct {
-	BroadcaastID   string `json:"broadcast_id"`
+	BroadcastID    string `json:"broadcast_id"`
 	Title          string `json:"title"`
 	ShouldNotTweet bool   `json:"should_not_tweet"`
 	Locale         string `json:"locale"`
@@ -38,11 +38,11 @@ type PublishBroadcastResponse struct {
 }
 
 type StopBroadcastRequest struct {
-	BroadcaastID string `json:"broadcast_id"`
+	BroadcastID string `json:"broadcast_id"`
 }
 
 type DeleteBroadcastRequest struct {
-	BroadcaastID string `json:"broadcast_id"`
+	BroadcastID string `json:"broadcast_id"`
 }
 
 type DeleteBroadcastResponse struct {
