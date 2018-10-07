@@ -196,7 +196,7 @@ func (i ClientImpl) CreateBroadcast(region string, is360 bool) (*CreateBroadcast
 func (i ClientImpl) PublishBroadcast(broadcastID string, title string, withTweet bool, locale string) (*PublishBroadcastResponse, error) {
 
 	req := PublishBroadcastRequest{
-		BroadcaastID:   broadcastID,
+		BroadcastID:    broadcastID,
 		Title:          title,
 		ShouldNotTweet: !withTweet,
 		Locale:         locale,
@@ -213,7 +213,7 @@ func (i ClientImpl) PublishBroadcast(broadcastID string, title string, withTweet
 func (i ClientImpl) StopBroadcast(broadcastID string) error {
 
 	req := StopBroadcastRequest{
-		BroadcaastID: broadcastID,
+		BroadcastID: broadcastID,
 	}
 
 	if err := i.request("POST", "/broadcast/stop", req, nil); err != nil {
@@ -233,7 +233,7 @@ func (i ClientImpl) GetBroadcast(broadcastID string) (*Broadcast, error) {
 
 func (i ClientImpl) DeleteBroadcast(broadcastID string) error {
 	req := DeleteBroadcastRequest{
-		BroadcaastID: broadcastID,
+		BroadcastID: broadcastID,
 	}
 
 	if err := i.request("POST", "/broadcast/delete", req, nil); err != nil {
