@@ -223,10 +223,11 @@ func TestPublishBroadcast(t *testing.T) {
 		assert.Equal(t, "title", params.Title)
 		assert.Equal(t, true, params.ShouldNotTweet)
 		assert.Equal(t, "ja_JP", params.Locale)
+		assert.Equal(t, true, params.EnableSuperHearts)
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"broadcast":{"id":"broadcast_id","state":"running","title":"title"}}`))
+		w.Write([]byte(`{"broadcast":{"id":"broadcast_id","state":"running","title":"title","enable_super_hearts":true}}`))
 	}))
 	defer ts.Close()
 
@@ -239,7 +240,7 @@ func TestPublishBroadcast(t *testing.T) {
 		accessToken: "test-token",
 	}
 
-	result, err := c.PublishBroadcast("broadcast_id", "title", false, "ja_JP")
+	result, err := c.PublishBroadcast("broadcast_id", "title", false, "ja_JP", true)
 	assert.NoError(t, err)
 	assert.Equal(t, "broadcast_id", result.Broadcast.ID)
 	assert.Equal(t, "running", result.Broadcast.State)

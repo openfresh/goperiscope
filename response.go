@@ -27,10 +27,11 @@ type CreateBroadcastResponse struct {
 }
 
 type PublishBroadcastRequest struct {
-	BroadcastID    string `json:"broadcast_id"`
-	Title          string `json:"title"`
-	ShouldNotTweet bool   `json:"should_not_tweet"`
-	Locale         string `json:"locale"`
+	BroadcastID       string `json:"broadcast_id"`
+	Title             string `json:"title"`
+	ShouldNotTweet    bool   `json:"should_not_tweet"`
+	Locale            string `json:"locale"`
+	EnableSuperHearts bool   `json:"enable_super_hearts"`
 }
 
 type PublishBroadcastResponse struct {
