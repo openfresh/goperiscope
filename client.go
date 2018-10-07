@@ -147,7 +147,7 @@ func (c AuthClientImpl) request(method, path string, params interface{}, result 
 type Client interface {
 	GetRegion() (*GetRegionResponse, error)
 	CreateBroadcast(region string, is360 bool) (*CreateBroadcastResponse, error)
-	PublishBroadcast(broadcastID string, title string, withTweet bool, locale string) (*PublishBroadcastResponse, error)
+	PublishBroadcast(broadcastID string, title string, withTweet bool, locale string, enableSuperHearts bool) (*PublishBroadcastResponse, error)
 	StopBroadcast(broadcastID string) error
 	GetBroadcast(broadcastID string) (*Broadcast, error)
 	DeleteBroadcast(broadcastID string) error
@@ -193,13 +193,14 @@ func (i ClientImpl) CreateBroadcast(region string, is360 bool) (*CreateBroadcast
 	return &result, nil
 }
 
-func (i ClientImpl) PublishBroadcast(broadcastID string, title string, withTweet bool, locale string) (*PublishBroadcastResponse, error) {
+func (i ClientImpl) PublishBroadcast(broadcastID string, title string, withTweet bool, locale string, enableSuperHearts bool) (*PublishBroadcastResponse, error) {
 
 	req := PublishBroadcastRequest{
-		BroadcastID:    broadcastID,
-		Title:          title,
-		ShouldNotTweet: !withTweet,
-		Locale:         locale,
+		BroadcastID:       broadcastID,
+		Title:             title,
+		ShouldNotTweet:    !withTweet,
+		Locale:            locale,
+		EnableSuperHearts: enableSuperHearts,
 	}
 
 	var result PublishBroadcastResponse
