@@ -106,6 +106,7 @@ func TestCreateBroadcast(t *testing.T) {
 		}
 		assert.Equal(t, "ap-northeast-1", params.Region)
 		assert.Equal(t, false, params.Is360)
+		assert.Equal(t, true, params.IsLowLatency)
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
@@ -151,7 +152,7 @@ func TestCreateBroadcast(t *testing.T) {
 		accessToken: "test-token",
 	}
 
-	result, err := c.CreateBroadcast("ap-northeast-1", false)
+	result, err := c.CreateBroadcast("ap-northeast-1", false, true)
 	assert.NoError(t, err)
 
 	assert.Equal(t, "hogehogehoge", result.Broadcast.ID)

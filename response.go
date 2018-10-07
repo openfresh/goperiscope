@@ -15,8 +15,9 @@ type OAuthRefreshResponse struct {
 }
 
 type CreateBroadcastRequest struct {
-	Region string `json:"region"`
-	Is360  bool   `json:"is_360"`
+	Region       string `json:"region"`
+	Is360        bool   `json:"is_360"`
+	IsLowLatency bool   `json:"is_low_latency"`
 }
 
 type CreateBroadcastResponse struct {
