@@ -9,7 +9,7 @@ type OAuthRefreshRequest struct {
 	RefreshToken string `json:"refresh_token"`
 }
 
-func (r *OAuthRefreshRequest) String() string {
+func (r OAuthRefreshRequest) String() string {
 	return fmt.Sprintf("grant_type=%s,client_id=%s,client_secret=%s,refresh_token=%s", r.GrantType, r.ClientID, r.ClientSecret, r.RefreshToken)
 }
 
@@ -20,7 +20,7 @@ type OAuthRefreshResponse struct {
 	TokenType   string `json:"token_type"`
 }
 
-func (r *OAuthRefreshResponse) String() string {
+func (r OAuthRefreshResponse) String() string {
 	return fmt.Sprintf("access_token=%s,user=[%s],expires_in=%d,token_type=%s", r.AccessToken, r.User.String(), r.ExpiresIn, r.TokenType)
 }
 
@@ -30,7 +30,7 @@ type CreateBroadcastRequest struct {
 	IsLowLatency bool   `json:"is_low_latency"`
 }
 
-func (r *CreateBroadcastRequest) String() string {
+func (r CreateBroadcastRequest) String() string {
 	return fmt.Sprintf("region=%s,is_360=%t,is_low_latency=%t", r.Region, r.Is360, r.IsLowLatency)
 }
 
@@ -41,7 +41,7 @@ type CreateBroadcastResponse struct {
 	Encoder     Encoder     `json:"encoder"`
 }
 
-func (r *CreateBroadcastResponse) String() string {
+func (r CreateBroadcastResponse) String() string {
 	return fmt.Sprintf("broadcast={%s},video_access={%s},share_url=%s,encoder=%s",
 		r.Broadcast.String(), r.VideoAccess.String(), r.ShareURL, r.Encoder.String())
 }
@@ -54,7 +54,7 @@ type PublishBroadcastRequest struct {
 	EnableSuperHearts bool   `json:"enable_super_hearts"`
 }
 
-func (r *PublishBroadcastRequest) String() string {
+func (r PublishBroadcastRequest) String() string {
 	return fmt.Sprintf("broadcast_id=%s,title=%s,should_not_tweet=%t,locale=%s,enable_super_hearts=%t",
 		r.BroadcastID, r.Title, r.ShouldNotTweet, r.Locale, r.EnableSuperHearts)
 }
@@ -63,7 +63,7 @@ type PublishBroadcastResponse struct {
 	Broadcast Broadcast `json:"broadcast"`
 }
 
-func (r *PublishBroadcastResponse) String() string {
+func (r PublishBroadcastResponse) String() string {
 	return fmt.Sprintf("broadcast=%s", r.Broadcast.String())
 }
 
@@ -71,7 +71,7 @@ type StopBroadcastRequest struct {
 	BroadcastID string `json:"broadcast_id"`
 }
 
-func (r *StopBroadcastRequest) String() string {
+func (r StopBroadcastRequest) String() string {
 	return fmt.Sprintf("broadcast_id=%s", r.BroadcastID)
 }
 
@@ -79,14 +79,14 @@ type DeleteBroadcastRequest struct {
 	BroadcastID string `json:"broadcast_id"`
 }
 
-func (r *DeleteBroadcastRequest) String() string {
+func (r DeleteBroadcastRequest) String() string {
 	return fmt.Sprintf("broadcast_id=%s", r.BroadcastID)
 }
 
 type DeleteBroadcastResponse struct {
 }
 
-func (r *DeleteBroadcastResponse) String() string {
+func (r DeleteBroadcastResponse) String() string {
 	return ""
 }
 
@@ -94,6 +94,6 @@ type GetRegionResponse struct {
 	Region string `json:"region"`
 }
 
-func (r *GetRegionResponse) String() string {
+func (r GetRegionResponse) String() string {
 	return fmt.Sprintf("region=%s", r.Region)
 }
