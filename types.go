@@ -8,7 +8,7 @@ type Broadcast struct {
 	Title string `json:"title"`
 }
 
-func (b *Broadcast) String() string {
+func (b Broadcast) String() string {
 	return fmt.Sprintf("id=%s,state=%s,title=%s", b.ID, b.State, b.Title)
 }
 
@@ -21,7 +21,7 @@ type Encoder struct {
 	IsStreamActive           bool                `json:"is_stream_active"`
 }
 
-func (e *Encoder) String() string {
+func (e Encoder) String() string {
 	return fmt.Sprintf("stream_key=%s,rtmp_url=%s,rtmps_url=%s,display_name=%s,recommended_configuration={%s},is_stream_active=%t",
 		e.StreamKey, e.RtmpURL, e.RtmpsURL, e.DisplayName, e.RecommendedConfiguration.String(), e.IsStreamActive)
 }
@@ -39,7 +39,7 @@ type StreamConfiguration struct {
 	AudioNumChannels  uint32 `json:"audio_num_channels"`
 }
 
-func (c *StreamConfiguration) String() string {
+func (c StreamConfiguration) String() string {
 	return fmt.Sprintf("video_codec=%s,video_bitrate=%d,framerate=%d,keyframe_interval=%d,width=%d,height=%d,audio_codec=%s,audio_sampling_rate=%d,audio_bitrate=%d,audio_num_channels=%s",
 		c.VideoCodec, c.VideoBitrate, c.Framerate, c.KeyframeInterval, c.Width, c.Height, c.AudioCodec, c.AudioSamplingRate, c.AudioBitrate, c.AudioNumChannels)
 }
@@ -54,7 +54,7 @@ type User struct {
 	ProfileImageURLs []ProfileImageURLs `json:"profile_image_urls"`
 }
 
-func (u *User) String() string {
+func (u User) String() string {
 	return fmt.Sprintf("id=%s,username=%s,twitter_id=%s,twitter_username=%s,description=%s,display_name=%s,profile_image_urls=%+v",
 		u.ID, u.Username, u.TwitterID, u.TwitterUsername, u.Description, u.DisplayName, u.ProfileImageURLs,
 	)
@@ -67,12 +67,16 @@ type ProfileImageURLs struct {
 	URL    string `json:"url"`
 }
 
+func (p ProfileImageURLs) String() string {
+	return fmt.Sprintf("width=%d,height=%d,ssl_url=%s,url=%s", p.Width, p.Height, p.SslURL, p.URL)
+}
+
 type VideoAccess struct {
 	HlsURL      string `json:"hls_url"`
 	HTTPSHlsURL string `json:"https_hls_url"`
 }
 
-func (v *VideoAccess) String() string {
+func (v VideoAccess) String() string {
 	return fmt.Sprintf("hls_url=%s,https_hls_url=%s", v.HlsURL, v.HTTPSHlsURL)
 }
 
